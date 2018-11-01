@@ -22,5 +22,6 @@ $ cordova platform add android
 $ cordova run android
 ```
 
-Substitute ios for android if not on a Mac.
+![CreatePlan](/src/assets/screenshot/1.png)
 
+![CreatePlan](/src/assets/screenshot/2.png)
