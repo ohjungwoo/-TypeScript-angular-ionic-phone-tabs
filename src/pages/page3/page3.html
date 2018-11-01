@@ -1,0 +1,18 @@
+<ion-content padding>
+
+  <ion-list>
+    <button ion-item *ngFor="let item of dataList" (click)="itemTapped($event, item)">
+      <!-- <ion-icon [name]="item.icon" item-left></ion-icon>
+      {{item.title}}
+      <div class="item-note" item-right>
+        {{item.location}}
+      </div> -->
+
+      <h2>{{item.title}}</h2>
+      <p>{{item.location}}</p>
+      <p>{{item.description}}</p>
+    </button>
+  </ion-list>
+
+
+</ion-content>

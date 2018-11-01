@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>연락처</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="person">
+    <div *ngIf="person" class="selection">
+        <ion-card>
+            <ion-card-content>
+                <img src="{{person.picture}}"/>
+            </ion-card-content>
+
+            <ion-list>
+                <a ion-item>
+                    <ion-icon name="body" item-left></ion-icon>
+                    <p>Name</p>
+                    <h2>{{person.name}}</h2>
+                </a>
+                <a href="tel:{{person.mobilePhone}}" ion-item>
+                    <ion-icon name="call" item-left></ion-icon>
+                    <p>Call Mobile</p>
+                    <h2>{{person.mobilePhone}}</h2>
+                </a>
+                <a href="tel:{{person.phone}}" ion-item>
+                    <ion-icon name="call" item-left></ion-icon>
+                    <p>Call Office</p>
+                    <h2>{{person.phone}}</h2>
+                </a>
+
+                <a href="mailto:{{person.email}}" ion-item>
+                    <ion-icon name="mail" item-left></ion-icon>
+                    <p>Email</p>
+                    <h2>{{person.email}}</h2>
+                </a>
+
+                <a ion-item>
+                    <ion-icon name="pricetag" item-left></ion-icon>
+                    <p>Nick</p>
+                    <h2>{{person.nick}}</h2>
+                </a>
+            </ion-list>
+
+        </ion-card>
+    </div>
+</ion-content>

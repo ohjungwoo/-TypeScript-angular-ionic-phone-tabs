@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>GitJob</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="cards-bg">
+
+  <ion-item>
+
+    <ion-input full type="text" [(ngModel)]="searchCondition.description" placeholder="Filter by title, benefits, companies, expertise"></ion-input>
+
+  </ion-item>
+
+  <ion-item>
+
+    <ion-input full  type="text" [(ngModel)]="searchCondition.location" placeholder="Filter by city, state, zip code or country"></ion-input>
+  </ion-item>
+
+<ion-item>
+      <button ion-button full (click)="onSearchCondition()">
+        <ion-icon  name="search"></ion-icon>
+        검색
+      </button>
+  </ion-item>
+
+
+
+  <ion-card *ngFor="let item of items" (click)="itemTapped($event, item)">
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="https://api.adorable.io/avatars/58/abott@adorable.png">
+      </ion-avatar>
+      <h2>{{item.title}}</h2>
+      <p>{{item.type}}</p>
+    </ion-item>
+
+    <img src="{{item.company_logo}}">
+
+    <ion-card-content>
+      <p>{{item.how_to_apply}}</p>
+    </ion-card-content>
+
+    <ion-row>
+      <ion-col>
+        <button ion-button icon-left clear small>
+        <ion-icon name="thumbs-up"></ion-icon>
+        <div>{{item.location}}</div>
+      </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button icon-left clear small>
+        <ion-icon name="text"></ion-icon>
+        <div>{{item.company}}</div>
+      </button>
+      </ion-col>
+
+    </ion-row>
+    <ion-row>
+      <ion-col left text-left>
+        <ion-note>
+          {{item.created_at}}
+        </ion-note>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+
+
+  <ion-infinite-scroll *ngIf="!isLastPageReached()" (ionInfinite)="findNext($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+
+</ion-content>

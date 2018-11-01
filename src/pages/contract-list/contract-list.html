@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>연락처</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+  <ion-searchbar [(ngModel)]="searchTerm" [formControl]="searchControl" (ionInput)="onSearchInput()"></ion-searchbar>
+
+  <div *ngIf="searching" class="spinner-container">
+    <ion-spinner></ion-spinner>
+  </div>
+
+  <ion-list>
+    <button ion-item *ngFor="let item of people" (click)="itemTapped($event, item)" (press)="onLongPress($event, item)">
+        <ion-avatar item-left>
+          <img src="{{item.picture}}">
+        </ion-avatar>
+        <h2>{{item.name}}</h2> <h2 *ngIf="item.nick">({{item.nick}})</h2>
+        <p>{{item.mobilePhone}}</p>
+      </button>
+  </ion-list>
+</ion-content>

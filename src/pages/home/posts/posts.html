@@ -1,0 +1,24 @@
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="下拉刷新" refreshingSpinner="circles" refreshingText="조회중...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-fab right bottom>
+    <button ion-fab color="secondary" (click)="addTopic()"><ion-icon name="create"></ion-icon></button>
+  </ion-fab>
+  <ion-list class="list-avatar-page">
+    <ion-item *ngFor="let item of posts;trackBy:item?.id" (click)="openPage(item.id)">
+      <ion-avatar item-start (click)="openUserPage(item.author.loginname, $event)">
+        <img src="https://api.adorable.io/avatars/58/{{item.userId}}@adorable.png">
+      </ion-avatar>
+      <h3>{{item.title}}</h3>
+      <!-- <p><span [tab]="item"></span> &nbsp;&nbsp; {{item.userId}}</p> -->
+      <p><span></span> &nbsp;&nbsp; {{item.userId}}</p>
+      <ion-note item-end>{{item.id}}</ion-note>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="조회중...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
